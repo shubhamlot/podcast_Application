@@ -3,13 +3,13 @@ const { buildSchema } = require('graphql')
 module.exports = buildSchema(`
 type Channel {
     _id: ID
-    creator:String!
+    creator:User!
     channelname:String!
     rssfeed:String!
 }
 
 input ChannelInput{
-    creator:String!
+    
     channelname:String!
     rssfeed:String!
 
@@ -21,6 +21,7 @@ type User{
     lastname:String!
     email:String!
     password:String
+    subscribed:[Channel!]
 }
 
 input UserInput{
@@ -32,6 +33,7 @@ input UserInput{
 
 type RootQuery {
     channels: [Channel!]!
+    users : [User!]!
 }
 
 type RootMutation {

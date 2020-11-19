@@ -18,12 +18,14 @@ const userSchema = new Schema({
         type:String,
         required:true
     },
-    subscibed:[
+    subscribed:[
         {
+        
         type:Schema.Types.ObjectId,
-        ref:'channel'
-        }
-    ]
+        ref:'Channel'
+        
+    }
+]
     
 })
 
