@@ -21,12 +21,6 @@ const UserSchema = new Schema({
         type:String,
         required:true
     },
-    mychannels:[
-        {
-            type:Schema.Types.ObjectId,
-            ref:'Channel'
-        }
-    ],
     subscription:[
         {
             type:Schema.Types.ObjectId,
