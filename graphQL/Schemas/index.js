@@ -29,12 +29,20 @@ module.exports = buildSchema(`
 
       input ChannelInput{
         channelname:String!
-        author:String!
+        author:String
         rss:String!
+      }
+
+
+      type AuthData{
+        userId: ID!,
+        token: String!,
+        tokenExpiration: Int!
       }
 
       type RootQuery{
 
+        login(email:String!, password:String!):AuthData!
         users:[User!]!
         channels:[Channel!]
 

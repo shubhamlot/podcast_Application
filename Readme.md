@@ -13,7 +13,7 @@ the graphQL folder in the project hold the 2 folders __Resolers__ and __Schemas_
 
 it containd the rersolvers and schema of the respectively of the api(grapgQL)
 
-2. the name of the datavse is __Pod_dataset__ which has:
+2. the name of the dataset is __Pod_dataset__ which has:
 - __channel__
 channel has the the fields as _ _id_,_channelname_, _author_, _rss_
 
