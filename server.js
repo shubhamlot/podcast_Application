@@ -16,7 +16,7 @@ app.use(isAuth)
 app.use('/graphql', graphqlHTTP({
   schema: graphqlSchema,
   rootValue: graphqlResolver,
-  graphiql:true
+  graphiql:false
 }))
 
 
