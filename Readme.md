@@ -1,7 +1,7 @@
-## Podcast Builder
+# Podcast Builder
 
-# Database and api design
-## using graphQL and mongodb
+## Database and api design
+### using graphQL and mongodb
 
 1. the api of the project will be available at the location 
 [http://localhost:8080/graphQL](http://localhost:8080/graphQL).
