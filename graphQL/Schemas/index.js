@@ -25,12 +25,14 @@ module.exports = buildSchema(`
         channelname:String!
         author: String!
         rss:String!
+        channel_type:String!
       }
 
       input ChannelInput{
         channelname:String!
         author:String
         rss:String!
+        channel_type:String!
       }
 
 
