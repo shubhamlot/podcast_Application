@@ -5,16 +5,14 @@ module.exports = buildSchema(`
 
       type User{
         _id:ID
-        firstname:String!
-        lastname:String!
+        username:String!
         email:String!
         password:String
         subscription:[String!]
       }
 
       input UserInput{
-        firstname:String!
-        lastname:String!
+        username:String!
         password:String
         email:String!
        

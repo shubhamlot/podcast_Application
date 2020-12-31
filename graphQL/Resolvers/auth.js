@@ -30,8 +30,8 @@ module.exports = {
       })
      .then(hashedpassword=>{
             const user = new User({
-              firstname:arg.userInput.firstname,
-              lastname:arg.userInput.lastname,
+              username:arg.userInput.username,
+              
               email:arg.userInput.email,
               password:hashedpassword,
               subscription:arg.userInput.subscription
