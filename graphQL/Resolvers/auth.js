@@ -18,14 +18,16 @@ module.exports = {
     },
 
     createUser:(arg)=>{
+      //console.log(User.findOne({email:arg.userInput.email}))
 
       return User.findOne({email:arg.userInput.email})
       .then(user=>{
-       
+          //console.log(user)
         if (user){
           //console.log("throw")
           throw new Error('User Exists')
         }
+        //console.log("happy")
         return bcrypt.hash(arg.userInput.password,12);
       })
      .then(hashedpassword=>{
@@ -42,7 +44,7 @@ module.exports = {
           return { ...result._doc, _id:result.id, password:null }
       })
       .catch(err=>{
-        console.log(err)
+        return err
       })
       
     },

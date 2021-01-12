@@ -1,0 +1,137 @@
+
+body {
+   
+    font-family:  sans-serif;
+    color: #F2F2F2;
+    background: linear-gradient(to right, #660066 0%, #000066 100%);
+}
+#container-login {
+    background-color: #c1e7fa;
+    position: relative;
+    top: 50%;
+    margin: auto;
+    width: 340px;
+    height: 445px;
+    border-radius: 0.35em;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+    border:2px solid #ff0062;
+}
+
+#container-register {
+    background-color: #1D1F20;
+    position: relative;
+    top: 20%;
+    margin: auto;
+    width: 340px;
+    height: 480px;
+    border-radius: 0.35em;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#title {
+    position: relative;
+    color: #ff0062;
+    background-color: #c1e7fa;
+    font-weight: bold;
+    width: 100%;
+    padding: 20px 0px;
+    border-radius: 0.35em;
+    font-size: 22px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+
+
+.input {
+    margin: auto;
+    width: 240px;
+    border-radius: 4px;
+    border: 1px solid #ff0062;
+    background-color: #c1e7fa;
+    padding: 8px 0px;
+    margin-top: 15px;
+    font-size: 20px;
+}
+
+
+
+
+input[type=text] {
+    
+    margin: 0;
+    background-color: #c1e7fa;
+    border: 1px solid #c1e7fa;
+    padding: 4px 0px;
+    border-radius: 3px;
+}
+
+input[type=text]:focus {
+   
+    outline: none;
+}
+
+
+input[type=password] {
+    
+    margin: 0;
+    background-color: #c1e7fa;
+    border: 1px solid #c1e7fa;
+    padding: 4px 0px;
+    border-radius: 3px;
+}
+
+input[type=password]:focus {
+   
+    outline: none;
+}
+
+input[type=email] {
+   
+    margin: 0;
+    background-color: #c1e7fa;
+    border: 1px solid #c1e7fa;
+    padding: 4px 0px;
+    border-radius: 3px;
+
+}
+
+input[type=email]:focus {
+   
+    outline: none;
+}
+
+
+
+.submit {
+    padding: 6px 25px;
+    background: #ff0062;
+    color: #ffffff;
+    font-weight: bold;
+    border: 0 none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.register {
+    margin: auto;
+    padding: 16px 0;
+    text-align: center;
+    color: black;
+    margin-top: 40px;
+    width: 85%;
+    border-top: 1px solid #ff0062;
+}
+
+
+#register-link {
+    margin-top: 10px;
+    padding: 6px 25px;
+    background: #373E4A;
+    color: #ffffff;
+    font-weight: bold;
+    border: 0 none;
+    cursor: pointer;
+    border-radius: 3px;
+}
