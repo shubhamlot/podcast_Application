@@ -5,6 +5,7 @@ import Homepage from "./pages/Home" ;
 
 import AuthContext from "./context/auth-context";
 import { Component } from 'react';
+import SignupPage from './pages/Signup';
 
 class App extends Component {
 
@@ -27,8 +28,9 @@ render(){
      <AuthContext.Provider value={{token:this.state.token,userId:this.state.userId, 
       login:this.login, logout:this.logout}}>
     <Redirect from="/" to="/auth" exact />
-    <Route path="/auth" component={ AuthPage }/>
+    <Route path="/auth" component={ AuthPage } />
     <Route path="/home" component={ Homepage }/>
+    <Route path="/signup" component={ SignupPage }/>
     </AuthContext.Provider>
    </Switch> 
    </BrowserRouter>
