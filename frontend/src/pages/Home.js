@@ -12,7 +12,6 @@ class Home extends React.Component {
     }
 
     check=()=>{
-        console.log(this.context.tokenExpiration)
         if(this.context.token === null){
             this.props.history.push('/auth/');
         }
@@ -20,7 +19,7 @@ class Home extends React.Component {
     
     render(){
        // console.log(this.context.username)
-       console.log(this.context.tokenExpiration)
+       
         return<div onLoad={ this.check }>
             <h1>Home</h1>
             <h2>hello {this.context.username}</h2>
