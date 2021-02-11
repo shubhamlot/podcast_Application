@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import './Auth.css';
 import AuthContext from "../context/auth-context";
-import {Redirect} from 'react-router-dom';
 class AuthPage extends Component {
 
     
-    static contextType = AuthContext
+    static contextType = AuthContext;
+
+    
+    
+
     constructor(props){
         super(props);
         
@@ -35,6 +38,7 @@ class AuthPage extends Component {
                 query {
                     login(email:"${email}",password:"${password}"){
                         userId
+                        username
                         token
                         tokenExpiration
                     }
@@ -58,7 +62,7 @@ class AuthPage extends Component {
                 //console.log(resData);
                 if(resData.data.login.token){
                     this.context.login(resData.data.login.token, 
-                        resData.data.login.userId, resData.data.login.tokenExpiration)
+                        resData.data.login.userId,resData.data.login.username, resData.data.login.tokenExpiration)
                     
                     this.props.history.push('/home/');
                 }

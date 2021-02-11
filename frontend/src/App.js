@@ -11,21 +11,24 @@ class App extends Component {
 
   state = {
     token:null,
-    userId:null
+    userId:null,
+    username:null,
+    tokenExpiration:null
   };
 
-  login = (token, userId, tokenExpiration)=>{
-    this.setState({token:token,userId:userId})
+  login = (token, userId,username, tokenExpiration)=>{
+    this.setState({token:token,userId:userId,username:username,tokenExpiration:tokenExpiration})
   };
 
   logout = ()=>{
-    this.setState({ token:null, userId:null })
+    this.setState({ token:null, userId:null,username:null,tokenExpiration:null })
   };
 render(){
   return (
    <BrowserRouter>
    <Switch>
-     <AuthContext.Provider value={{token:this.state.token,userId:this.state.userId, 
+     <AuthContext.Provider value={{token:this.state.token,
+     userId:this.state.userId,username:this.state.username,
       login:this.login, logout:this.logout}}>
     <Redirect from="/" to="/auth" exact />
     <Route path="/auth" component={ AuthPage } />
