@@ -49,7 +49,7 @@ class SignupPage extends Component {
             if(res.status !==200 && res.status !== 201){
                 throw new Error("Failed!")
             }
-            this.props.history.push('/auth/');
+            this.props.history.push('/auth');
             return res.json()
 
 
@@ -63,16 +63,24 @@ class SignupPage extends Component {
     
     render(){
        return(
-            <div>
-            <form onSubmit={ this.submitHandlerRegister }>
-            <input type="text" placeholder="username" ref={ this.usernameEL } ></input><br></br>
-         
-                <input type="text" placeholder="email" ref={ this.emailEL } ></input><br></br>
-                <input type="password" placeholder="password" ref={ this.passwordEL } ></input><br></br>
-                <button type="submit">Submit</button>
-            </form>
-            <button type="button" on onClick={ this.switchHandler } >Switch</button>
-        </div>
+        <div className="column">
+        {/* this is start of root */}
+
+ <div className="container">
+ <form onSubmit={ this.submitHandlerRegister }>
+     <h2>Register</h2><br></br>
+     <input required type="text" id="un"  placeholder="username" ref={ this.usernameEL }/><br></br>
+     <label for="un"></label>
+     <input required type="text" id="un"  placeholder="email" ref={ this.emailEL }/><br></br>
+     <label for="un"></label>
+     <input required type="password" id="pwd" placeholder="password" ref={ this.passwordEL }/><br></br>
+     <label for="pwd"></label>
+     <button type="submit" >Register</button><br></br>
+     <h4>Already have an account? <button type="button" onClick={ this.switchHandler }> Login</button></h4>
+ </form>
+ </div>
+ {/* this is end of root div}*/}
+</div>
             )
         }
 
