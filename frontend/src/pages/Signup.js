@@ -63,7 +63,7 @@ class SignupPage extends Component {
     
     render(){
        return(
-        <div className="column">
+        <div className="coverauth">
         {/* this is start of root */}
 
  <div className="container">

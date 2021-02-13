@@ -6,8 +6,9 @@ module.exports = (req, res , next) =>{
         req.isAuth = false
         return next()
     }
-    //console.log(authHeader)
+    // console.log(authHeader)
     const token = authHeader.split(' ')[1]
+    console.log(token)
 
     if(!token || token === ' '){
         req.isAuth = false
@@ -16,7 +17,8 @@ module.exports = (req, res , next) =>{
 
     let decodedtoken
     try{
-        decodedtoken = jwt.verify(token, 'secretkey!@#')
+        decodedtoken = jwt.verify(token, 'somesupersecretkey')
+        
     }
     catch(err){
         req.isAuth = false

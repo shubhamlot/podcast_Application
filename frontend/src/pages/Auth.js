@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import './Auth.css';
+import './Auth.css'
 import AuthContext from "../context/auth-context";
 class AuthPage extends Component {
 
@@ -75,22 +75,21 @@ class AuthPage extends Component {
     render(){
        
         return(
-           <div className="column">
-               {/* this is start of root */}
-	
-		<div className="container">
+           <div className="coverauth">
+               	<div className="container">
 		<form onSubmit={ this.submitHandlerLogin }>
 			<h2>LOGIN</h2><br></br>
-			<input autoComplete="off" required type="text" id="un"  placeholder="email" ref={ this.emailEL }/><br></br>
+            <input autoComplete="off" required 
+            type="text" id="un"  placeholder="email" ref={ this.emailEL }/><br></br>
 			<label for="un"></label>
-			<input autoComplete="off" required type="password" id="pwd" placeholder="password" ref={ this.passwordEL }/><br></br>
+            <input autoComplete="off" required 
+            type="password" id="pwd" placeholder="password" ref={ this.passwordEL }/><br></br>
 			<label for="pwd"></label>
 			<button type="submit" >Login</button><br></br>
 			<h4>Dont have an account? <button type="button" onClick={ this.switchHandler }> Register</button></h4>
 		</form>
 	    </div>
-        {/* this is end of root div}*/}
-	</div>
+        </div>
     
 	
                

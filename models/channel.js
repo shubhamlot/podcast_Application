@@ -16,20 +16,19 @@ const ChannelSchema=new Schema({
         type:String,
         required:true
     },
-    channel_details:{
         channel_type:{
             type:String,
             required:true
         },
-        followers:{
-            type:Number,
-            required:true
-        },
-        registration_date:{
-            type:Date,
-            require:true
-        }
-    }
+        // followers:{
+        //     type:Number,
+        //     //required:true
+        // },
+        // registration_date:{
+        //     type:Date,
+        //     //require:true
+        // }
+    
 
 })
 

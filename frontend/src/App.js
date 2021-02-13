@@ -1,11 +1,12 @@
-import './App.css';
+
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import AuthPage from "./pages/Auth";
 import Homepage from "./pages/Home" ;
 
 import AuthContext from "./context/auth-context";
-import { Component } from 'react';
+import { Component ,React } from 'react';
 import SignupPage from './pages/Signup';
+import CreateChannel from './pages/Createchannel';
 
 class App extends Component {
 
@@ -26,16 +27,21 @@ class App extends Component {
 render(){
   return (
    <BrowserRouter>
+   
    <Switch>
      <AuthContext.Provider value={{token:this.state.token,
      userId:this.state.userId,username:this.state.username,
       login:this.login, logout:this.logout}}>
-    <Redirect from="/" to="/auth" exact />
-    <Route path="/auth" component={ AuthPage } />
-    <Route path="/home" component={ Homepage }/>
-    <Route path="/signup" component={ SignupPage }/>
+    {!this.state.token && <Redirect from="/" to="/auth" exact />}
+    {this.state.token && <Redirect from="/" to="/home" exact />}
+    {this.state.token && <Redirect from="/auth" to="/home" exact />}
+    {!this.state.token &&<Route path="/auth" component={ AuthPage } />}
+    {this.state.token &&<Route path="/home" component={ Homepage }/>}
+    {!this.state.token && <Route path="/signup" component={ SignupPage }/>}
+    {this.state.token &&<Route path="/createchannel" component={CreateChannel}/>}
     </AuthContext.Provider>
    </Switch> 
+  
    </BrowserRouter>
 
   );

@@ -4,11 +4,13 @@
     margin: 0;
     box-sizing: border-box;
     font-family: sans-serif;
+    
 }
-body{
-    /* background-color: rgb(43, 42, 42); */
+.coverauth{
     background-image: url("../img/background3.jpg");
     background-size: cover;
+    height: 100vh;
+    width: 100vw;
     
 }
 
@@ -36,7 +38,7 @@ button[type="submit"]{
     border-radius: 10px;
     margin: 20px 0;
     padding: 8px 17px;
-    font-size: 25px;
+    font-size: 20px;
     cursor: pointer;
     
 }
@@ -57,18 +59,18 @@ button[type="button"]:hover{
     text-decoration: underline;
 }
 
-input{
-    border: none;
-    background-color:white;
-    border-bottom: 1px solid black;
-    color: black;
-    padding: 15px 0px;
-    outline: 0;
+input,select{
+    width: 90%;
+    padding: 12px 20px;
     font-size: 18px;
-    box-shadow: 0;
-    
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
 
-    }
+
 h2{
     color:teal;
     font-size: 30px;
