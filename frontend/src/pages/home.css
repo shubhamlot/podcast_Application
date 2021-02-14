@@ -8,3 +8,10 @@
 h1.inline{
     color: white;
 }
+.displaychannel{
+    color: white;
+    display: block;
+    font-size: 20px;
+    border: 1px solid white;
+    width: 20%;
+}

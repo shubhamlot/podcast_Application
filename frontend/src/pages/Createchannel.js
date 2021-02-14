@@ -19,14 +19,15 @@ class Createchannel extends Component{
         if(this.context.token===null){
             return;
         }
+        
 
             event.preventDefault();
         let channelname = this.channelnameEL.current.value;
         let rssfeed = this.rssfeedEL.current.value;
-        
+        let userId = this.context.userId;
         let category = this.categoryEL.current.value;
-        // console.log(channelname+rssfeed+category+this.context.userId)
-
+        // console.log(userId)
+        // return
         if(channelname.trim().length === 0 || rssfeed.trim().length === 0){
             console.log("error enter the data");
             return;
@@ -36,7 +37,7 @@ class Createchannel extends Component{
             mutation{
                 createChannel(channelInput:{
                   channelname:"${channelname}",
-                  author:"${this.context.userId}",
+                  author:"${userId}",
                   rss:"${rssfeed}",
                   channel_type:"${category}"
                 }){
@@ -47,18 +48,20 @@ class Createchannel extends Component{
             `
         }
         const token = this.context.token;
-        console.log(token)
+        //console.log(token)
         fetch('http://localhost:8080/graphQL',{
             method:"POST",
             body:JSON.stringify(requestBody),
             headers:{
                 'Content-Type':'application/json',
-                Authorization: 'Bearer '+token
+                Authorization: 'Bearer '+ token,
             }
         }).then(res=>{
             
-            console.log(res)
-            // this.props.history.push('/auth');
+            // console.log(res)
+            this.props.history.push("/home");
+            alert('you have created the channel '+ channelname)
+
             return res.json()
 
 
@@ -81,7 +84,8 @@ class Createchannel extends Component{
             <div className="collection">
             <form onSubmit={ this.submitHandlerCreateChannel }>
 
-            <input type="text"  name="userid" value={this.context.username} disabled/>
+            <input type="text"  name="userid" value={this.context.userId} 
+            ref={ this.userIdEL } disabled />
 
                
                  <input type="text"  name="channelname" placeholder="Channel name.." 
@@ -94,7 +98,7 @@ class Createchannel extends Component{
                 ref={ this.categoryEL } required/>
                 
                 <button type="submit" >submit</button>
-                <button type="reset">cancle</button>
+                <button type="reset">clear</button>
             </form>
             </div>
             </div>

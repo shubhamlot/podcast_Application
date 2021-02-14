@@ -14,7 +14,7 @@ class Navbar extends Component{
         return(
             <ul>
                 <li><NavLink to="/home">Home</NavLink></li>
-                <li><a href="#home">Subscription</a></li>
+                <li><a href="#sub">Subscription</a></li>
                 <li><NavLink to="/createchannel">Create Channel</NavLink></li>
                 <li onClick={ this.logout }>
                     <NavLink to="/auth">Logout</NavLink></li>

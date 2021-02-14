@@ -8,9 +8,9 @@ const { argsToArgsConfig } = require('graphql/type/definition')
 module.exports = {
 
     channels:(req)=>{
-      if(!req.isAuth){
-        throw new Error("unauthenticated")
-      }
+      // if(!req.isAuth){
+      //   throw new Error("unauthenticated")
+      // }
 
       return Channel.find()
       .then(channels =>{
@@ -24,14 +24,16 @@ module.exports = {
     },
 
     createChannel: async (arg, req) => {
-      
-      // if (!req.isAuth) {
-      //   throw new Error('Unauthenticated!');
-      // }
+      // console.log(!req.isAuth)
+      if (req.isAuth) {
+        throw new Error('Unauthenticated!');
+      }
       let createdchannel
+      
       const channel = new Channel({
+        
         channelname: arg.channelInput.channelname,
-        author: req.userId,
+        author: arg.channelInput.author,
         rss: arg.channelInput.rss,
         // channel_details:{
         channel_type:arg.channelInput.channel_type,

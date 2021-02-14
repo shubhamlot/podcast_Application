@@ -69,11 +69,14 @@ class SignupPage extends Component {
  <div className="container">
  <form onSubmit={ this.submitHandlerRegister }>
      <h2>Register</h2><br></br>
-     <input required type="text" id="un"  placeholder="username" ref={ this.usernameEL }/><br></br>
+     <input required type="text" id="un"  placeholder="username" ref={ this.usernameEL }
+     required/><br></br>
      <label for="un"></label>
-     <input required type="text" id="un"  placeholder="email" ref={ this.emailEL }/><br></br>
+     <input required type="text" id="un"  placeholder="email" ref={ this.emailEL }
+     required/><br></br>
      <label for="un"></label>
-     <input required type="password" id="pwd" placeholder="password" ref={ this.passwordEL }/><br></br>
+     <input required type="password" id="pwd" placeholder="password" ref={ this.passwordEL }
+     required/><br></br>
      <label for="pwd"></label>
      <button type="submit" >Register</button><br></br>
      <h4>Already have an account? <button type="button" onClick={ this.switchHandler }> Login</button></h4>

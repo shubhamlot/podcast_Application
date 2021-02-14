@@ -1,32 +1,94 @@
+import { Collection } from 'mongoose';
 import React from 'react';
 import AuthContext from '../context/auth-context';
 import './home.css';
 import Navbar from './Navbar';
+import ChannelList from './ChannelList';
 
 
 class Home extends React.Component {
    
     static contextType = AuthContext;
 
+    state={
+        isdone:false,
+        events:[]
+    };
     
+
+    fetchEvents=()=>{
+        
+        const requestBody = {
+          query: `
+              query {
+                channels {
+                  channelname
+                }
+              }
+            `
+        };
+        if(this.state.isdone===true){
+          return
+        }
+        fetch('http://localhost:8080/graphql', {
+          method: 'POST',
+          body: JSON.stringify(requestBody),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+          .then(res => {
+            
+            if (res.status !== 200 && res.status !== 201) {
+              throw new Error('Failed!');
+            }
+            
+            return res.json()
+          })
+          .then(resData => {
+            // console.log(resData.data.channels)
+            this.setState({isdone:true})
+            const event = resData.data.channels;
+            this.setState({ events: event });
+            
+          })
+          .catch(err => {
+            console.log(err);
+            
+          });
+      }
 
     // check=()=>{
     //     if(this.context.token === null){
     //         this.props.history.push('/auth/');
     //     }
     // }
+
+   
+    
+
     
     render(){
        // console.log(this.context.username)
-       
-        return<div className="home">
+      //  console.log(this.state)
+        return(<div className="home" onClick={this.fetchEvents()}>
             <div>
                 <Navbar user={ this.context.username }></Navbar>
                 </div>
-            <h1 className="inline">Home</h1>
+            <h1 className="inline" >Home</h1>
+           
+            <div>
+      
+      {this.state.events.map((event) => (
+        <div className="displaychannel">{event.channelname}</div>
+       ))}
+     
+          </div>
+            
             
             
         </div>
+        )
 
     }
 }

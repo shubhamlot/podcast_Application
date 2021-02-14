@@ -50,16 +50,18 @@ class AuthPage extends Component {
             method:"POST",
             body:JSON.stringify(requestBody),
             headers:{
-                'Content-Type':'application/json'
+                'Content-Type':'application/json',
+               
             }
         }).then(
             res=>{
                 if(res.status !==200 && res.status !== 201){
+                    alert('email or password incorrect')
                     throw new Error("Failed!");
                 }
                 return res.json();
             }).then(resData => {
-                //console.log(resData);
+                // console.log(resData);
                 if(resData.data.login.token){
                     this.context.login(resData.data.login.token, 
                         resData.data.login.userId,resData.data.login.username, resData.data.login.tokenExpiration)
