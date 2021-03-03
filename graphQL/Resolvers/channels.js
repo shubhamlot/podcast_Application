@@ -1,4 +1,4 @@
-const User = require('../../models/user')
+const user = require('../../models/user')
 const Channel = require('../../models/channel')
 const { argsToArgsConfig } = require('graphql/type/definition')
 
@@ -17,14 +17,15 @@ module.exports = {
         return channels.map(channel => {
           return {
             ...channel._doc,
-            _id:channel.id
+            _id:channel.id,
+            // author: channel.bind(this, user._id),//
           }
         })
       })
     },
 
     createChannel: async (arg, req) => {
-      // console.log(!req.isAuth)
+       //console.log(!req.isAuth)
       if (req.isAuth) {
         throw new Error('Unauthenticated!');
       }

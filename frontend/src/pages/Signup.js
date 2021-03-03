@@ -49,6 +49,7 @@ class SignupPage extends Component {
             if(res.status !==200 && res.status !== 201){
                 throw new Error("Failed!")
             }
+            alert('your account sucessfully created login using ur credentials now');
             this.props.history.push('/auth');
             return res.json()
 

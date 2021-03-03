@@ -66,7 +66,7 @@ class AuthPage extends Component {
                     this.context.login(resData.data.login.token, 
                         resData.data.login.userId,resData.data.login.username, resData.data.login.tokenExpiration)
                     
-                    this.props.history.push('/home/');
+                    this.props.history.push('/home');
                 }
             }).catch(err=>{
                 console.log(err)

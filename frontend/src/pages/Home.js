@@ -23,6 +23,7 @@ class Home extends React.Component {
               query {
                 channels {
                   channelname
+                  
                 }
               }
             `
@@ -71,17 +72,20 @@ class Home extends React.Component {
     render(){
        // console.log(this.context.username)
       //  console.log(this.state)
-        return(<div className="home" onClick={this.fetchEvents()}>
+        return(<div className="home" onLoad={this.fetchEvents()}>
             <div>
                 <Navbar user={ this.context.username }></Navbar>
                 </div>
             <h1 className="inline" >Home</h1>
            
             <div>
-      
-      {this.state.events.map((event) => (
-        <div className="displaychannel">{event.channelname}</div>
-       ))}
+            {/* there is one problem over here */}
+           {this.state.events.map((event) => (
+              <div>
+                <div className="displaychannel">{event.channelname}</div>
+              {/* <div className="displaychannel">by {event.author.username}</div> */}
+              </div>
+            ))}
      
           </div>
             

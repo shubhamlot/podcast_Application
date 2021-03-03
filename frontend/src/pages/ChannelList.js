@@ -1,18 +1,12 @@
 import React, { Component } from 'react'
 import "./home.css"
 
-const ChannelList = (props) => {
+// const ChannelList = (props) => {
   
-  return (
-    <div>
+//   return (
+    
+//   );
       
-      {props.channels.map((event) => (
-        <div className="displaychannel">{event.channelname}</div>
-      ))}
-     
-    </div>
-  );
-      
-}
+// }
 
-export default ChannelList
+// export default ChannelList
