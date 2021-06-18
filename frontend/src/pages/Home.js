@@ -76,7 +76,7 @@ class Home extends React.Component {
             <div>
                 <Navbar user={ this.context.username }></Navbar>
                 </div>
-            <h1 className="inline" >Home</h1>
+            <h1 className="inline" >Home update</h1>
            
             <div>
             {/* there is one problem over here */}
