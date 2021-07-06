@@ -19,15 +19,15 @@ export default function Sidebar(props) {
   const { archives, description, social, title } = props;
 
   return (
-    <Grid item xs={12} md={4} >
+    <Grid item xs={12} md={12} >
       <Paper elevation={0} className={classes.sidebarAboutBox}>
-        <Typography variant="h6" gutterBottom>
+        <Typography align="center" variant="h6" gutterBottom>
           {title}
         </Typography>
         <Typography>{description}</Typography>
       </Paper>
 
-      <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
+     {/* <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
         Archives
       </Typography>
       {archives.map((archive) => (
@@ -40,20 +40,24 @@ export default function Sidebar(props) {
           {archive.title}
         </Link>
       ))}
-
-      <Typography variant="h6" gutterBottom className={classes.sidebarSection}>
+*/}
+      {/*<Typography variant="h6" gutterBottom className={classes.sidebarSection}>
         Social
-      </Typography>
+      </Typography>*/}
+   {/*    <Grid container direction="row" spacing={1} alignItems="center">
       {social.map((network) => (
-        <Link display="block" variant="body1" href="#" key={network.name}>
-          <Grid container direction="row" spacing={1} alignItems="center">
+        
             <Grid item>
-              <network.icon />
+        <Link display="block" variant="body1" href="#" key={network.name}>
+         
+              <network.icon />{network.name}
+             </Link>
+            
+            
             </Grid>
-            <Grid item>{network.name}</Grid>
-          </Grid>
-        </Link>
+        
       ))}
+      </Grid>*/}
     </Grid>
   );
 }

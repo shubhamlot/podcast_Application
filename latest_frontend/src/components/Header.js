@@ -9,12 +9,13 @@ import SideDrawer from "./SideDrawer";
 const useStyles=makeStyles((theme) =>({
     title: {
         flexGrow: 1,
+        color:"#ffffff"
     },
     tagline: {
         fontSize: 20,
         textTransform: "uppercase",
         justifyContent:"center",
-        fontFamily: "montserrat",
+        color:"#ffffff"
     },
 }));
 
@@ -29,11 +30,8 @@ const Header = () => {
           </IconButton>
          </SideDrawer>
          <Typography variant='h6'className={classes.title}>PODCAST APP</Typography>
-            <IconButton color='inherit'><HomeIcon /></IconButton>
-            <IconButton color='inherit'>
-                <Badge badgeContent={4} color="secondary"><NotificationsActiveIcon /></Badge>
-            </IconButton>
-            <IconButton color='inherit'><AccountCircleIcon />Profile</IconButton>
+           
+            <IconButton ><AccountCircleIcon /></IconButton>
         </Toolbar>
 
         <Divider></Divider>
