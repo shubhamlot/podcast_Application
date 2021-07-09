@@ -29,10 +29,10 @@ module.exports = buildSchema(`
       }
 
       input ChannelInput{
-        channelname:String!
+        
         author: String!
         rss:String!
-        channel_type:String!
+        
         
       }
 
@@ -48,6 +48,7 @@ module.exports = buildSchema(`
         url:String,
         title:String,
         discription:String
+        img:String
       }
 
       type RootQuery{
@@ -55,7 +56,7 @@ module.exports = buildSchema(`
         login(email:String!, password:String!):AuthData!
         users:[User!]!
         channels:[Channel!]
-        getEpisode(rss:String):Audio
+        getEpisode(id:String):[Audio]
 
       }
       type RootMutation{

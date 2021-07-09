@@ -1,36 +1,47 @@
+import {useParams} from 'react-router-dom'
+import { Container, createMuiTheme, Grid, makeStyles, ThemeProvider } from "@material-ui/core";
+import '../App.css';
+import FeaturedEpisode from "./FeaturedEpisode";
+import EpisodeCard from "./Episodedisplay";
+import Header from "./Header";
+import { featuredPosts, sidebar } from "../data/data";
+import Sidebar from "./Sidebar";
+import Footer from "./Footer";
+import LinearDeterminate from './PodcastPlay'
 import React from 'react'
-export default function Episodeplay({post}){
+const useStyles = makeStyles((theme) => ({
+  mainGrid: {
+    marginTop: theme.spacing(3),
+  },
+}));
+export default function Episodeplay(){
 
-// console.log(`${post.rss}`)
 
+const classes = useStyles();
+const {channel} = useParams()
   React.useEffect(()=>{
-    // if(post!=null){
-            
-      
-  // }
+    
+    fetchEvents(channel)
   },[])
-
     const [state,setState]=React.useState({
     isdone:false,
     events:[]
   })
-
-    const fetchEvents=()=>{
+    const fetchEvents=(id)=>{
         
         const requestBody = {
           query: `
               query {
-                getEpisode(rss:"http://localhost:4000/RSS/dfghj567.rss") {
+                getEpisode(id:"${id}") {
                   url
                   title
                   discription
+                  img
                 }
               }
             `
         };
-        if(state.isdone===true){
-          return
-        }
+       
         fetch('http://localhost:8080/graphql', {
           method: 'POST',
           body: JSON.stringify(requestBody),
@@ -47,11 +58,11 @@ export default function Episodeplay({post}){
             return res.json()
           })
           .then(resData => {
-            // console.log(resData.data.channels)
-            // setState({isdone:true})
-            // const event = resData.data.channels;
-            // setState({ events: event });
-            console.log(resData)
+            // console.log(resData.data.getEpisode)
+            setState({isdone:true})
+            const event = resData.data.getEpisode;
+            setState({ events: event });
+          
             
           })
           .catch(err => {
@@ -59,8 +70,50 @@ export default function Episodeplay({post}){
             
           });
       }
-fetchEvents()
-      
+      const darkTheme = createMuiTheme({
+    palette: {
+      type: 'dark',
+    },
+  });
 
-  return <p>play</p>
+if(state.events!=undefined){
+  let index=0
+  console.log(state.events)
+  return(<ThemeProvider theme={darkTheme}>
+   <Container>
+    <Header />
+    <FeaturedEpisode post={state.events[index]} />
+    <br />
+   
+    <Grid container spacing={4}>
+          {state.events.map((post) => (
+            
+            <EpisodeCard key={post.channelname} post={post} />
+
+
+          ))}
+    </Grid>
+    <Grid  container spacing={1} className={classes.mainGrid}>
+          <Sidebar
+            title={sidebar.title}
+            description={sidebar.description}
+            archives={sidebar.archives}
+            social={sidebar.social}
+          />
+    </Grid>
+    {/*<LinearDeterminate/>*/}
+   </Container>
+   <Footer
+        title="Podcast App"
+        description="All Rights Reserved"
+      />
+      
+  </ThemeProvider>
+  
+  );
+}
+else{
+  return <p>Nothing here</p>
+}
+
 }

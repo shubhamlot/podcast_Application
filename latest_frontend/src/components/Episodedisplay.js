@@ -29,11 +29,6 @@ const useStyles = makeStyles((theme)=>({
     zIndex: theme.zIndex.drawer + 1,
     color: '#fff',
   },
-   menu:{
-    // backgroundColor:theme.palette.background.paper,
-    color:"#ffffff",
-    textDecoration:"none"
-  }
 }));
 
 export default function FeaturedPost({ post }) {
@@ -58,23 +53,20 @@ export default function FeaturedPost({ post }) {
           <div className={classes.cardDetails}>
             <CardContent>
               <Typography component="h2" variant="h5">
-                {post.channelname}
+                {post.title}
               </Typography>
               <Typography variant="subtitle1" paragraph>
                 {post.discription}
               </Typography>
-              <Link to={`/channel/${post._id}`} className={classes.menu}> 
-              <Button variant="text" className={classes.btn} onClick={()=>{handleClick(post)}} >
-              <HeadsetIcon />
-                    Listen Now..
-              </Button>
-              </Link>
+              <audio controls>
+                <source src={post.url} />
+              </audio>
             </CardContent>
           </div>
           <Hidden xsDown>
             <CardMedia
               className={classes.cardMedia}
-              image={post.channel_img}
+              image={post.img}
               title={post.imageTitle}
             />
           </Hidden>

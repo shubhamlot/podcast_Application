@@ -18,7 +18,7 @@ const ChannelSchema=new Schema({
     },
         channel_type:{
             type:String,
-            required:true
+            
         },
         channel_img:{
             type:String,

@@ -12,6 +12,10 @@ import React from 'react'
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import {AuthProvider} from './context/auth-context'
 import EpisodeList from './components/EpisodeList'
+import Signup from './components/Signup'
+import Login from './components/Login'
+import Createchannel from './components/Createchannel'
+
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
     marginTop: theme.spacing(3),
@@ -28,17 +32,16 @@ function App() {
 
   const [state,setState]=React.useState({
     userId:'',
-    isGuest:true,
     token:null,
     tokenExpiration:null
   })
-    const login =(userId,isGuest,token,tokenExpiration)=>{
+    const login =(userId,token,tokenExpiration)=>{
 
-    setState({token:token,tokenExpiration:tokenExpiration,userId:userId,isGuest:isGuest})
+    setState({token:token,tokenExpiration:tokenExpiration,userId:userId})
     
   }
   const logout =()=>{
-   setState({userId:null,isGuest:true,token:null,tokenExpiration:null })
+   setState({userId:null,token:null,tokenExpiration:null })
 
   }
 
@@ -49,8 +52,12 @@ function App() {
     <AuthProvider value={{userId:state.userId,isGuest:state.isGuest,login:login,token:state.token,tokenExpiration:state.tokenExpiration,logout:logout}}> 
       <Switch>
         <Route path="/Home" component={Home}/>
-        <Route path="/episode" component={EpisodeList}/>
+        <Route path="/channel/:channel" component={EpisodeList}/>
+        <Route path="/login" component={Login}/>
+        <Route path="/createchannel" component={Createchannel}/>
+        <Route component={Signup}/>
       </Switch>
+
     </AuthProvider>
     </BrowserRouter>
     

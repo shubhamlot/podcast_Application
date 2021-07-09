@@ -8,14 +8,20 @@ import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import LinearDeterminate from './PodcastPlay'
 import React from 'react'
+
+import AuthContext from '../context/auth-context'
+
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
     marginTop: theme.spacing(3),
   },
+
 }));
 
 function Home() {
 
+  const auth = React.useContext(AuthContext)
+  console.log(auth)
   const [state,setState]=React.useState({
     isdone:false,
     events:[]
@@ -25,18 +31,21 @@ function Home() {
     fetchEvents()
     // console.log(state.events)
 
-    if(state.events !== undefined){
+    
+    
+  },[])
+
+  if(state.events !== undefined){
      index= Math.floor(Math.random() * state.events.length)
      console.log(index)
     }
-    
-  },[])
   const fetchEvents=()=>{
         
         const requestBody = {
           query: `
               query {
                 channels {
+                  _id
                   channelname
                   channel_img
                   discription
@@ -64,7 +73,7 @@ function Home() {
             return res.json()
           })
           .then(resData => {
-            // console.log(resData.data.channels)
+            console.log(resData.data.channels)
             setState({isdone:true})
             const event = resData.data.channels;
             setState({ events: event });
@@ -82,6 +91,7 @@ function Home() {
     palette: {
       type: 'dark',
     },
+
   });
 
   const classes = useStyles();
