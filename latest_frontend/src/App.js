@@ -8,6 +8,10 @@ import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import Home from './components/Home'
 import PlayPodcast from './components/PodcastPlay'
+import React from 'react'
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+import {AuthProvider} from './context/auth-context'
+import EpisodeList from './components/EpisodeList'
 const useStyles = makeStyles((theme) => ({
   mainGrid: {
     marginTop: theme.spacing(3),
@@ -22,10 +26,34 @@ function App() {
     },
   });
 
+  const [state,setState]=React.useState({
+    userId:'',
+    isGuest:true,
+    token:null,
+    tokenExpiration:null
+  })
+    const login =(userId,isGuest,token,tokenExpiration)=>{
+
+    setState({token:token,tokenExpiration:tokenExpiration,userId:userId,isGuest:isGuest})
+    
+  }
+  const logout =()=>{
+   setState({userId:null,isGuest:true,token:null,tokenExpiration:null })
+
+  }
+
   const classes = useStyles();
 
   return ( 
-    <Home/>
+    <BrowserRouter>
+    <AuthProvider value={{userId:state.userId,isGuest:state.isGuest,login:login,token:state.token,tokenExpiration:state.tokenExpiration,logout:logout}}> 
+      <Switch>
+        <Route path="/Home" component={Home}/>
+        <Route path="/episode" component={EpisodeList}/>
+      </Switch>
+    </AuthProvider>
+    </BrowserRouter>
+    
   
   );
 }

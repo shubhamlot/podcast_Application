@@ -28,6 +28,13 @@ class Createchannel extends Component{
         let category = this.categoryEL.current.value;
         // console.log(userId)
         // return
+
+
+
+
+
+
+
         if(channelname.trim().length === 0 || rssfeed.trim().length === 0){
             console.log("error enter the data");
             return;

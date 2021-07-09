@@ -23,7 +23,9 @@ module.exports = buildSchema(`
         channelname:String!
         author: String!
         rss:String!
+        channel_img:String
         channel_type:String!
+        discription:String
       }
 
       input ChannelInput{
@@ -42,11 +44,18 @@ module.exports = buildSchema(`
         tokenExpiration: Int!
       }
 
+      type Audio{
+        url:String,
+        title:String,
+        discription:String
+      }
+
       type RootQuery{
 
         login(email:String!, password:String!):AuthData!
         users:[User!]!
         channels:[Channel!]
+        getEpisode(rss:String):Audio
 
       }
       type RootMutation{

@@ -20,6 +20,12 @@ const ChannelSchema=new Schema({
             type:String,
             required:true
         },
+        channel_img:{
+            type:String,
+        },
+        discription:{
+            type:String,
+        }
         // followers:{
         //     type:Number,
         //     //required:true
