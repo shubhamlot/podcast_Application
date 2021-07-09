@@ -1,7 +1,7 @@
 const user = require('../../models/user')
 const Channel = require('../../models/channel')
 const { argsToArgsConfig } = require('graphql/type/definition')
-
+const Parser = require('rss-parser')
 
 
 
@@ -15,6 +15,7 @@ module.exports = {
       return Channel.find()
       .then(channels =>{
         return channels.map(channel => {
+
           return {
             ...channel._doc,
             _id:channel.id,
@@ -24,34 +25,72 @@ module.exports = {
       })
     },
 
+    getEpisode:async(arg,req)=>{
+      
+      let parser = new Parser()
+
+       return Channel.findOne({_id:arg.id}).then(res=>{
+        return res.rss
+       }).then(async rss=>{
+        return await parser.parseURL(rss)
+       }).then(feed=>{
+         let temp=[]
+
+         feed.items.forEach(item=>{
+          
+          temp.push({
+            title:item.title,
+            url:item.link,
+            discription:item.content,
+            img:item.enclosure.url
+          })
+          
+        })
+        return temp
+      }).then(data=>{
+        return data
+      })
+
+      
+    },
+
     createChannel: async (arg, req) => {
        //console.log(!req.isAuth)
-      if (req.isAuth) {
-        throw new Error('Unauthenticated!');
-      }
+     
       let createdchannel
-      
-      const channel = new Channel({
+
+      let parser = new Parser()
+        // feed.channel.forEach(item=>{
+        //   console.log(item.title)
+        // })
+      return await parser.parseURL(arg.channelInput.rss).then(async feed=>{
+
+         const channel = new Channel({
         
-        channelname: arg.channelInput.channelname,
+        channelname: feed.title,
         author: arg.channelInput.author,
         rss: arg.channelInput.rss,
-        // channel_details:{
-        channel_type:arg.channelInput.channel_type,
-        //   followers:0,
-        //   registration_date:"2020-12-30T11:33:52.354Z"
-        // }
+        channel_img:feed.image.url
       });
+        channel.save();
+         return channel
+      }).then(data=>{
+        console.log(data)
+        return data
+      })
+
       
-      try {
-        const result = await channel.save();
-        createdchannel = result;
-  
-        return createdchannel;
-      } catch (err) {
-        console.log(err);
-        throw err;
-      }
+    
+
+      // try {
+      //   const result = await channel.save();
+      //   createdchannel = result;
+
+      //   return createdchannel;
+      // } catch (err) {
+      //   console.log(err);
+      //   throw err;
+      // }
 
     }
   }

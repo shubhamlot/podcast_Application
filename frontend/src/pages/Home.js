@@ -23,7 +23,7 @@ class Home extends React.Component {
               query {
                 channels {
                   channelname
-                  
+                  channel_img
                 }
               }
             `
@@ -51,6 +51,7 @@ class Home extends React.Component {
             this.setState({isdone:true})
             const event = resData.data.channels;
             this.setState({ events: event });
+            console.log(this.state)
             
           })
           .catch(err => {
@@ -83,6 +84,7 @@ class Home extends React.Component {
            {this.state.events.map((event) => (
               <div>
                 <div className="displaychannel">{event.channelname}</div>
+                <img src={event.channel_img}/>
               {/* <div className="displaychannel">by {event.author.username}</div> */}
               </div>
             ))}
