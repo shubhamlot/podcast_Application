@@ -78,7 +78,6 @@ export default function Login(){
                 query {
                     login(email:"${emailG}",password:"${passwordG}"){
                         userId
-                        username
                         token
                         tokenExpiration
                     }
@@ -101,12 +100,12 @@ export default function Login(){
                 }
                 return res.json();
             }).then(resData => {
-                // console.log(resData);
+                console.log(resData);
                 if(resData.data.login.token){
                     auth.login( 
                         resData.data.login.userId,resData.data.login.token,resData.data.login.tokenExpiration)
                     setState(true)
-                    // history.push('/home');
+                    history.push('/home');
                 }
             }).catch(err=>{
                 console.log(err)
@@ -125,6 +124,7 @@ export default function Login(){
         },
       });
   const classes = useStyles();
+  console.log(state)
   
   if(!state){
   return (
@@ -195,8 +195,8 @@ export default function Login(){
     </ThemeProvider>
   );
   }
-
   else{
+    // console.log(state)s
     return (<Redirect to='/home' />)
   }
 }

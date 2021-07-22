@@ -63,6 +63,7 @@ module.exports = {
         // feed.channel.forEach(item=>{
         //   console.log(item.title)
         // })
+        console.log(arg.channelInput.rss)
       return await parser.parseURL(arg.channelInput.rss).then(async feed=>{
 
          const channel = new Channel({
@@ -73,6 +74,7 @@ module.exports = {
         channel_img:feed.image.url
       });
         channel.save();
+
          return channel
       }).then(data=>{
         console.log(data)

@@ -32,8 +32,8 @@ module.exports = {
       })
      .then(hashedpassword=>{
             const user = new User({
-              username:arg.userInput.username,
-              
+              firstname:arg.userInput.firstname,
+              lastname:arg.userInput.lastname,
               email:arg.userInput.email,
               password:hashedpassword,
               subscription:arg.userInput.subscription
@@ -66,7 +66,7 @@ module.exports = {
         expiresIn: '1h'
       })
       
-      return { userId : user.id ,username: user.username, token: token , tokenExpiration : 1 }
+      return { userId : user.id ,token: token , tokenExpiration : 1 }
 
     }
 }

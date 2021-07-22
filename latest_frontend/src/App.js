@@ -46,16 +46,17 @@ function App() {
   }
 
   const classes = useStyles();
-
+ // console.log(state)
   return ( 
     <BrowserRouter>
-    <AuthProvider value={{userId:state.userId,isGuest:state.isGuest,login:login,token:state.token,tokenExpiration:state.tokenExpiration,logout:logout}}> 
+    <AuthProvider value={{userId:state.userId,login:login,token:state.token,tokenExpiration:state.tokenExpiration,logout:logout}}> 
+    
       <Switch>
-        <Route path="/Home" component={Home}/>
-        <Route path="/channel/:channel" component={EpisodeList}/>
-        <Route path="/login" component={Login}/>
-        <Route path="/createchannel" component={Createchannel}/>
-        <Route component={Signup}/>
+        {state.token && <Route path="/home" component={Home}/>}
+        {state.token && <Route path="/channel/:channel" component={EpisodeList}/>}
+        {!state.token && <Route path="/login" component={Login}/>}
+        {state.token && <Route path="/createchannel" component={Createchannel}/>}
+        {!state.token && <Route component={Signup}/>}
       </Switch>
 
     </AuthProvider>

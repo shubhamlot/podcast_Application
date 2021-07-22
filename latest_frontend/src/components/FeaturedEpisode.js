@@ -12,12 +12,18 @@ const useStyles=makeStyles({
         backgroundPosition:"center",
         backgroundSize:"justify",
         padding:"35px 25px",
-        cursor:"pointer"
+        cursor:"pointer",
+        height:"50vh"
 
     },
     top:{
-        color:"#ffffff",
-        mixBlendMode:"difference"
+        color:"#000000",
+        backgroundColor:"#ffffff",
+        opacity:1,
+        width:"50%",
+        borderRadius:10,
+        margin:10
+        // mixBlendMode:"difference"
     }
 });
 
@@ -29,16 +35,7 @@ const FeaturedPost = ({post}) => {
         <Card className={classes.cover} style={{
             backgroundImage: `url(${post.img})`
         }}>
-            <CardContent className={classes.top}>
-                <Typography className={classes.title}gutterBottom variant='h1'>
-                    {post.title}
-                </Typography>
-                <Typography variant='h6'>
-                {post.discription}
-                </Typography>
-                <CardActions>
-            </CardActions>
-            </CardContent>
+            
 
             
         </Card>

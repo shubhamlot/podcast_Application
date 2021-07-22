@@ -12,12 +12,18 @@ const useStyles=makeStyles({
         backgroundPosition:"center",
         backgroundSize:"justify",
         padding:"35px 25px",
-        cursor:"pointer"
+        height:"50vh",
 
     },
     top:{
-        color:"#ffffff",
-        mixBlendMode:"difference"
+        color:"#000000",
+        backgroundColor:"#ffffff",
+        opacity:1,
+        width:"50%",
+        borderRadius:10,
+        margin:10,
+        fontSize:50
+        // mixBlendMode:"difference"
     }
 });
 
@@ -29,21 +35,7 @@ const FeaturedPost = ({post}) => {
         <Card className={classes.cover} style={{
             backgroundImage: `url(${post.channel_img})`
         }}>
-            <CardContent className={classes.top}>
-                <Typography className={classes.title}gutterBottom variant='h4'>
-                    {post.channelname}
-                </Typography>
-                <Typography variant='h6'>
-                {post.discription}
-                </Typography>
-                <CardActions>
-                <Button variant="text" className={classes.btn}>
-                <HeadsetIcon />
-                 Listen Now..
-                </Button>
-            </CardActions>
-            </CardContent>
-
+        
             
         </Card>
 
