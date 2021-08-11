@@ -86,7 +86,7 @@ export default function Userlogin(){
             let requestBody = {
             query:`
                 mutation{
-                    createUser(userInput:{firstname:"${firstName}",lastname:"${lasttName}"
+                    createUser(userInput:{firstname:"${firstName}",lastname:"${lastName}"
                      email:"${email}", password:"${password}"}){
                         _id
                         email

@@ -53,9 +53,9 @@ const Header = () => {
         <>
         <Toolbar>
          <SideDrawer>
-          <IconButton color="inherit">
+       {/*   <IconButton color="inherit">
           <MenuIcon />
-          </IconButton>
+          </IconButton>*/}
          </SideDrawer>
          <Typography variant='h6'className={classes.title}>PODCAST APP</Typography>
            

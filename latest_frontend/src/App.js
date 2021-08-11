@@ -3,7 +3,7 @@ import './App.css';
 import FeaturedPost from "./components/FeaturedPost";
 import PostCard from "./components/PostCard";
 import Header from "./components/Header";
-import { featuredPosts, sidebar } from "./data/data";
+// import { featuredPosts, sidebar } from "./data/data";
 import Sidebar from "./components/Sidebar";
 import Footer from "./components/Footer";
 import Home from './components/Home'

@@ -3,7 +3,7 @@ import '../App.css';
 import FeaturedPost from "./FeaturedPost";
 import PostCard from "./PostCard";
 import Header from "./Header";
-import { featuredPosts, sidebar } from "../data/data";
+// import { featuredPosts, sidebar } from "../data/data";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import LinearDeterminate from './PodcastPlay'
@@ -112,14 +112,14 @@ function Home() {
             <PostCard key={post.channelname} post={post} />
           ))}
     </Grid>
-    <Grid  container spacing={1} className={classes.mainGrid}>
+   {/* <Grid  container spacing={1} className={classes.mainGrid}>
           <Sidebar
             title={sidebar.title}
             description={sidebar.description}
             archives={sidebar.archives}
             social={sidebar.social}
           />
-    </Grid>
+    </Grid>*/}
     {/*<LinearDeterminate/>*/}
    </Container>
    <Footer
