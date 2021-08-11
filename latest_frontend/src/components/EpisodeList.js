@@ -4,7 +4,7 @@ import '../App.css';
 import FeaturedEpisode from "./FeaturedEpisode";
 import EpisodeCard from "./Episodedisplay";
 import Header from "./Header";
-import { featuredPosts, sidebar } from "../data/data";
+// import { featuredPosts, sidebar } from "../data/data";
 import Sidebar from "./Sidebar";
 import Footer from "./Footer";
 import LinearDeterminate from './PodcastPlay'
@@ -94,12 +94,12 @@ if(state.events!=undefined){
           ))}
     </Grid>
     <Grid  container spacing={1} className={classes.mainGrid}>
-          <Sidebar
+          {/*<Sidebar
             title={sidebar.title}
             description={sidebar.description}
             archives={sidebar.archives}
             social={sidebar.social}
-          />
+          />*/}
     </Grid>
     {/*<LinearDeterminate/>*/}
    </Container>
